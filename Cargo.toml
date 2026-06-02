@@ -1,0 +1,12 @@
+[package]
+name = "review-agent"
+version = "0.1.0"
+edition = "2021"
+description = "Clone a repo, run Claude Code headless to produce a code audit, and open a pull request."
+
+[[bin]]
+name = "review-agent"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 2
