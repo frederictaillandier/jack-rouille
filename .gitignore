@@ -6,3 +6,6 @@
 
 # Backup files
 **/*.rs.bk
+
+# Scheduled-run logs
+*.log
