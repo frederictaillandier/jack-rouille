@@ -18,16 +18,23 @@ also have `Bash`, so you can run `gh` and `git` yourself. That gives two modes:
   PR branch. When you do this, finish with a **clean working tree** and do
   **not** write `PR_DESCRIPTION.md`, so the harness doesn't open a spurious PR.
 
-## Priority 1 — Respond to feedback on open PRs
+## Priority 1 — Maintain your open PRs
 Run `gh pr list --state open` and inspect each PR you authored, including its
-review threads and comments (`gh pr view <n> --comments`, `gh pr diff <n>`).
-If any has an unanswered comment or question directed at you:
+review threads, comments, and mergeability
+(`gh pr view <n> --comments`, `gh pr view <n> --json mergeable,mergeStateStatus`,
+`gh pr diff <n>`). If any needs you:
+- **Merge conflicts** (`mergeable` is `CONFLICTING`): check out the PR branch
+  (`gh pr checkout <n>`), merge or rebase the base branch into it, resolve the
+  conflicts, run the build/tests to confirm it's still green, then commit and
+  push to that same branch.
 - **A question / discussion:** reply with `gh pr comment <n> --body "..."`.
 - **A requested code change:** check out the PR branch (`gh pr checkout <n>`),
   make the change, commit and push it to that same branch, then leave a comment
-  summarising what you did. Ensure the working tree is clean afterwards.
-Handle the oldest unaddressed PR first. This is your task for the run — do not
-also start something new. (Skip threads already resolved or that don't need you.)
+  summarising what you did.
+After acting via `gh`/`git`, ensure the working tree is clean (see modes above).
+Handle the oldest affected PR first — fix conflicts before anything else, since
+a conflicting PR can't be merged. This is your task for the run — do not also
+start something new. (Skip threads already resolved or that don't need you.)
 
 ## Priority 2 — Make progress on an open issue
 If no open PR needs a response, run `gh issue list --state open` and pick one
