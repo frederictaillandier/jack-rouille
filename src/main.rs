@@ -232,6 +232,7 @@ fn run_agent(path: &Path, checkout_root: &Path) -> R<Option<String>> {
             "--permission-mode", "acceptEdits",
             "--allowedTools", "Read Grep Glob Bash Write Edit",
             "--output-format", "text",
+            "--settings", "{\"includeCoAuthoredBy\": false}",
         ],
         &dir,
     )?;
