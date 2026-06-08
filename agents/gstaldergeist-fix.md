@@ -18,6 +18,14 @@ also have `Bash`, so you can run `gh` and `git` yourself. That gives two modes:
   PR branch. When you do this, finish with a **clean working tree** and do
   **not** write `PR_DESCRIPTION.md`, so the harness doesn't open a spurious PR.
 
+## Code style — go easy on comments
+Whenever you write or change code, **keep code comments to a minimum**. Prefer
+clear names and small functions over explanatory comments. Only add a comment
+when it explains *why* something non-obvious is done (a subtle constraint, a
+workaround, a gotcha) — never to restate *what* the code plainly does. Do not
+narrate the diff in comments, and don't add doc comments to self-explanatory
+items. When in doubt, leave the comment out.
+
 ## Priority 1 — Maintain your open PRs
 Run `gh pr list --state open` and inspect each PR you authored, including its
 review threads, comments, and mergeability
